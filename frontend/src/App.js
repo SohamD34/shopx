@@ -1,8 +1,16 @@
 import './App.css';
 import Navbar from './components/navbar/navbar';
+import Footer from './components/footer/footer';
 import {BrowserRouter, Routes, Route} from 'react-router-dom';
 import Shop from './pages/shop';
 import LoginSignup from './pages/loginsignup';
+import men_banner from './components/assets/Frontend_Assets/banner_mens.png'
+import women_banner from './components/assets/Frontend_Assets/banner_women.png'
+import kid_banner from './components/assets/Frontend_Assets/banner_kids.png';
+import ShopCategory from './pages/shopcategory';
+import Product from './pages/product';
+import Cart from './pages/cart';
+
 
 function App() {
   return (
@@ -11,15 +19,17 @@ function App() {
             <Navbar/>
             <Routes>
                 <Route path='/' element={<Shop/>}/>
-                <Route path='/men' element={<Shop category="men"/>}/>
-                <Route path='/women' element={<Shop category="women"/>}/>
-                <Route path='/kids' element={<Shop category="kid"/>}/>
-                <Route path="/product" element={<div>Product Page</div>}>
-                    <Route path=':productId' element={<div>Product Details</div>}/>
+                <Route path='/men' element={<ShopCategory banner={men_banner} category="men"/>}/>
+                <Route path='/women' element={<ShopCategory banner={women_banner} category="women"/>}/>
+                <Route path='/kids' element={<ShopCategory banner={kid_banner} category="kid"/>}/>
+                <Route path="/product" element={<Product/>}>
+                    <Route path=':productId' element={<Product/>}/>
                 </Route>
-                <Route path='/cart' element={<div>Cart Page</div>}/>
-                <Route path='/login' element={<LoginSignup/>}/>
+                <Route path='/cart' element={<Cart/>}/>
+                <Route path='/loginsignup' element={<LoginSignup/>}/>
             </Routes>
+            
+            <Footer/>
         </BrowserRouter>
     </div>
   );
