@@ -1,5 +1,8 @@
 // MODULES
 
+require('dotenv').config();
+const MONGODB_URI = process.env.MONGODB_URI;
+const JWT_SECRET = process.env.JWT_SECRET
 const PORT = 4000;
 const express = require('express');
 const mongoose = require('mongoose');
@@ -29,7 +32,7 @@ app.use(cors(corsOptions));                            // app with connect with 
 
 
 // Connect to MongoDB
-mongoose.connect('mongodb+srv://sohamdeshmukh034:SohamND2003@shopx.6w4vnyo.mongodb.net/shopx')
+mongoose.connect({MONGODB_URI})
 
 
 // Image Storage Engine - Middleware to serve static files
@@ -222,7 +225,7 @@ app.post('/signup', async (req, res) => {
             isAdmin: user.isAdmin,
         }
     };
-    const authToken = jwt.sign(data, 'secret_ecom');
+    const authToken = jwt.sign(data, JWT_SECRET);
     res.json({
         success: true,
         authToken: authToken,
@@ -244,7 +247,7 @@ app.post('/login', async (req, res) => {
                 }
             }
 
-            const authToken = jwt.sign(data, 'secret_ecom');
+            const authToken = jwt.sign(data, JWT_SECRET);
             res.json({
                 success: true,
                 authToken: authToken
@@ -294,7 +297,7 @@ const fetchUser = async (req, res, next) => {
         return res.status(401).json({ error: "Please authenticate using a valid token" });
     }
     try {
-        const data = jwt.verify(token, 'secret_ecom');
+        const data = jwt.verify(token, JWT_SECRET);
         req.user = data.user;
         next();
     } catch (error) {
