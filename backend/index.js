@@ -23,7 +23,11 @@ app.use(express.json());                    // all requests will be in json form
 
 // CORS configuration
 const corsOptions = {
-    origin: ['http://localhost:3000', 'http://localhost:4000', 'http://localhost:5173'], // Add Vite's default port
+    origin: [
+        'https://sohamd34.github.io/shopx/',
+        'http://localhost:3000',
+        'http://localhost:5173'
+    ],
     credentials: true,
     optionsSuccessStatus: 200
 };
