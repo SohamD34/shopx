@@ -36,7 +36,7 @@ app.use(cors(corsOptions));                            // app with connect with 
 
 
 // Connect to MongoDB
-mongoose.connect({MONGODB_URI})
+mongoose.connect(MONGODB_URI)
 
 
 // Image Storage Engine - Middleware to serve static files
