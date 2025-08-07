@@ -3,7 +3,7 @@
 require('dotenv').config();
 const MONGODB_URI = process.env.MONGODB_URI;
 const JWT_SECRET = process.env.JWT_SECRET
-const PORT = 4000;
+const PORT = process.env.PORT || 4000;
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
