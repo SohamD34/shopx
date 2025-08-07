@@ -25,8 +25,8 @@ app.use(express.json());                    // all requests will be in json form
 const corsOptions = {
     origin: [
         'https://sohamd34.github.io/shopx/',
-        'http://localhost:3000',
-        'http://localhost:5173'
+        'https://shopx-backend-api.onrender.com/',
+        'https://shopx-admin-api.onrender.com/'
     ],
     credentials: true,
     optionsSuccessStatus: 200

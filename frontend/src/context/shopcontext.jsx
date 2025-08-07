@@ -21,7 +21,7 @@ const ShopContextProvider = (props) => {
     const [all_product, setAllProducts] = useState([]);
 
     useEffect(() => {
-        fetch('http://localhost:4000/allproducts')
+        fetch('https://shopx-backend-api.onrender.com/allproducts')
         .then((res) => res.json())
         .then((data) => setAllProducts(data));
     }, []);
@@ -38,7 +38,7 @@ const ShopContextProvider = (props) => {
         if(localStorage.getItem('auth-token')){
             console.log('Adding to cart on server:', itemIndex);
 
-            fetch('http://localhost:4000/addtocart', {
+            fetch('https://shopx-backend-api.onrender.com/addtocart', {
                 method: 'POST',
                 headers: {
                     'Accept':'application/json',
